@@ -1,0 +1,7 @@
+tmp
+node_modules
+
+# OS Garbage
+.DS_Store
+._*
+Thumbs.db
