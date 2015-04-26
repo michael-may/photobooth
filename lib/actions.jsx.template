@@ -1,0 +1,17 @@
+var workingDir = ##WORKINGDIR##,
+	outDir = ##OUTDIR##,
+	fileList = ##FILELIST##;
+
+var folder = new Folder(workingDir);
+
+function main() {
+	alert("hello photoshop!");
+
+	for(var i = 0; i < fileList.length; i++) {
+		var file = File(fileList[i]);
+		app.open(file);
+		break;
+	}
+	//return (new File($.fileName)).parent;
+	//return "done";
+}
