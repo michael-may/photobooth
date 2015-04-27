@@ -3,6 +3,7 @@
 var fs = require('fs'),
 	gulp = require('gulp'),
 	watch = require('gulp-watch'),
+	runSequence = require('run-sequence'),
 	photoEditor = require('../../lib/photoEditor.js');
 	//runSequence = require('run-sequence');
 
@@ -30,5 +31,9 @@ gulp.task('watch', function() {
 			console.log('PROCESS!!!');
 			photoEditor.edit(fileArr, './in/', './out/');
 		}
+	});
+
+	watch(['./out/**/*.*'], function() {
+		runSequence('uploadToS3', 'updateJSON', 'uploadJSONToS3', 'clean-out');
 	});
 });
