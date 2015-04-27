@@ -1,4 +1,4 @@
-# Shoptology Photo Booth scripts
+# Shoptology Photo Booth
 
 ### Installation
 *	Clone the repo  
@@ -10,7 +10,7 @@ WIN:
 -Extract
 -Add path to binary to Environment Variables
 ```
-*	Run 'npm install'  
+*	Run ```npm install```  
 *	Add a secrets.js with the following information:  
 
 ```javascript
@@ -22,6 +22,6 @@ var secrets = {
 module.exports = secrets;
 ```
 
-With your approved Shoptology AWS information.
-
+* Add your approved Shoptology AWS information.
 *	Run 'gulp watch' and throw some photos into the 'in' folder!
+

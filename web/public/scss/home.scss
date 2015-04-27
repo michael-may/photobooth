@@ -1,31 +1,17 @@
 @import "common";
 
-
-
-.phone, .text {
-	text-align:center;
-	a {
-		color:white;
-		text-decoration: underline;
-	}
+.gallery, .photo-container, .photo-container .thumbnail {
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
-
-@media (min-width: $screen-md-min) {
-	.text {
-		position:relative;
-		height: 574px;
-
-		.centered {
-			position:absolute;
-			top:50%;
-			left: 50%;
-			transform: translateY(-50%) translateX(-50%);
-			width: 65%;
-		}
-
-		h2 {
-			margin-bottom:20px;
-		}
-	}
+.thumbnail img {
+    width: 100%;
 }
+
+.single .thumbnail {
+    margin: 0;
+}
+
+@media (min-width: $screen-md-min) {}

@@ -1,64 +1,15 @@
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
 $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
-@import "../../../native/www/lib/scss/variables";
+
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 
 body {
-	font-family: 'Roboto', Arial, sans-serif;
-}
-
-.navbar {
-	margin:0;
-	background-color: #0c3540;
-	border: none;
-	border-radius: 0;
-}
-
-.navbar-brand {
-	background: url('../img/small-logo.png') no-repeat;
-	text-indent: -1000px;
-	width: 170px;
-	background-position: 0 7px;
-	margin: 0 auto !important;
-	float: none;
-	display: block;
-}
-
-.container {
-	color: white;
-	padding:40px;
-}
-
-.bg-light-blue {
-	background: #2699bd;
-	color:white;
-	a {
-		color:white;
-	}
-}
-
-form {
-	margin-bottom:10px;
-	label { font-weight: normal; }
-}
-
-.alert {
-	text-transform: capitalize;
-}
-
-footer {
-	padding:10px 2%;
-	color: #0c3540;
-	a { color: #0c3540; }
-	div {
-		width: 100%;
-		text-align: center;
-		padding:5px 0;
-	}
+    font-family: Arial, sans-serif;
 }
 
 @media (min-width: $screen-md-min) {
-	footer div {
-		width:auto;
-	}
+    footer div {
+        width: auto;
+    }
 }

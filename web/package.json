@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "compile": "./node_modules/webpack/bin/webpack.js -p; wintersmith build -C generator",
+    "compile": "./node_modules/webpack/bin/webpack.js -p;",
     "start": "webpack-dev-server --content-base public/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
