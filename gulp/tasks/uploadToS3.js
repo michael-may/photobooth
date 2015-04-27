@@ -43,8 +43,16 @@ gulp.task('updateJSON', function() {
             if(path.basename(file.path) !== 'out') {
             	// remove the extension
             	var filename = path.basename(file.path).split('.')[0];
-            	photos.photos.push(filename);
-            	console.log('added', filename);
+            	photos.photos.push({
+            		name:filename,
+            		created: new Date().getTime()
+            	});
+
+            	console.log('-------------------------');
+            	console.log('-------------------------');
+            	console.log('File url: http://shoptology-photo-booth-site.s3-website-us-east-1.amazonaws.com/?p='+filename);
+            	console.log('-------------------------');
+            	console.log('-------------------------');
 
             	// Save file
             	fs.writeFile("./web/public/photos.json", JSON.stringify(photos), function(err) {
@@ -67,7 +75,7 @@ gulp.task('uploadJSONToS3', function() {
         .pipe(s3({
 		  "key": secrets.accessKeyId,
 		  "secret": secrets.secretAccessKey,
-		  "bucket": "shoptology-photo-booth"
+		  "bucket": "shoptology-photo-booth-site"
 		}, options));
 
 });

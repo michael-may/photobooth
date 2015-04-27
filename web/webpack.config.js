@@ -8,9 +8,7 @@ var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 module.exports = {
     context: __dirname + "/public/app",
     entry: {
-        home: "./home",
-        reset: "./reset",
-        activate: "./activate"
+        home: "./home"
     },
     output: {
         // Make sure to use [name] or [id] in output.filename
