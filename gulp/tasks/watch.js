@@ -7,7 +7,7 @@ var fs = require('fs'),
 	//runSequence = require('run-sequence');
 
 gulp.task('watch', function() {
-	watch(['./in/**/*.jpg'], function() {
+	watch(['./in/**/*.JPG', './in/**/*.jpg'], function() {
 		var path = './in/';
 		var dir = fs.readdirSync(path);
 		var filesNeeded = 5;

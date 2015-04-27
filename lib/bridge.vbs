@@ -11,7 +11,7 @@ jsxfile.Close
 Set jsxFile = Nothing
 Set fsObj = Nothing
 
-javaScriptFile = fileContents & "main();"
+javaScriptFile = fileContents
 
 Set appObj = createObject("Photoshop.Application")
 
