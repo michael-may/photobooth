@@ -5,13 +5,30 @@ var workingDir = ##WORKINGDIR##,
 var folder = new Folder(workingDir);
 
 function main() {
-	alert("hello photoshop!");
+	//alert("hello photoshop!");
 
 	for(var i = 0; i < fileList.length; i++) {
-		var file = File(fileList[i]);
-		app.open(file);
-		break;
+		var file = File(fileList[i]),
+			doc = open(file);
+			
+		doc.resizeImage(640, 640, null, ResampleMethod.BICUBIC);
+		
+		var outFolder = new Folder(workingDir);
+
+		var saveFile = new File(outFolder + '/PROCESSED_' + i + '.jpg');
+
+		var saveWebOptions = new ExportOptionsSaveForWeb();
+		saveWebOptions.format = SaveDocumentType.JPEG;
+		saveWebOptions.includeProfile = false;
+		saveWebOptions.optimized = true;
+		saveWebOptions.quality = 75;
+
+		doc.exportDocument(saveFile, ExportType.SAVEFORWEB, saveWebOptions);
+
+		doc.close(SaveOptions.DONOTSAVECHANGES);
 	}
 	//return (new File($.fileName)).parent;
-	//return "done";
+	return "done";
 }
+
+main();
