@@ -1,0 +1,13 @@
+extends layout
+
+block prepend title
+  | Terms of Service | 
+
+block append scripts
+  script(src='/js/home.bundle.js')
+
+block content
+
+  .bg-light-blue
+    .container
+      include includes/terms.html

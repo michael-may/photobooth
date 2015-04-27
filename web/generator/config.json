@@ -1,0 +1,14 @@
+{
+    "output": "./../public/",
+    "locals": {
+        "url": "http://localhost:8080",
+        "name": "Season Link",
+        "owner": "Season Link",
+        "description": ""
+    },
+    "require": {
+    },
+    "jade": {
+        "pretty": true
+    }
+}

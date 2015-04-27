@@ -1,0 +1,100 @@
+extends layout
+
+block append vars
+  - ngApp = 'passwordApp'
+
+block append scripts
+  script(src='/js/reset.bundle.js')
+
+block prepend title
+  | Password Reset | 
+
+block content
+
+  .bg-light-blue
+    .container(ng-controller="password")
+
+      .reset(ng-show="view == 'reset'")
+        h2 Can't access your account?
+        p.
+          Enter your email below and we will send you and email with
+          instructions on resetting your password.
+        .row
+          .col-sm-6
+            form(ng-submit='resetPassword()')
+              .form-group
+                label(for='email') Email address
+                input(
+                  type='text',
+                  ng-model='reset.email',
+                  class='form-control',
+                  id='email',
+                  placeholder='eg. your@email.com'
+                )
+              button(
+                type='submit',
+                ng-disabled='!reset.email || reset.email.length < 6',
+                class='btn btn-default'
+              ) Reset Password
+            div(
+              class='alert alert-danger',
+              role='alert',
+              ng-repeat='error in reset.errors'
+            )
+              | {{error}}
+
+      .reset-success(ng-show="view == 'reset-success'")
+        h3 Email sending...
+        p.
+          We've sent you an email with instructions on resetting your password.
+          If it doesnt show up within 5 minutes, please check your spam folders.
+
+      .set(ng-show="view == 'set'")
+        h2 Set your new password
+        p Enter your new password below and confirm your password change.
+
+        .row
+          .col-sm-6
+            form(ng-submit="updatePassword()")
+              .form-group
+                label(for='password') Password
+                input(
+                  type="password",
+                  ng-model="set.password",
+                  class="form-control",
+                  id="password",
+                  placeholder="Password"
+                )
+              .form-group
+                label(for='confirm') Confirm Password
+                input(
+                  type='password',
+                  ng-model='set.confirm',
+                  class='form-control',
+                  id='confirm',
+                  placeholder='Password'
+                )
+                button(
+                  type='submit',
+                  ng-disabled='!set.password || !set.confirm',
+                  class='btn btn-default'
+                ) Update Password
+            div(
+              class='alert alert-danger',
+              role='alert',
+              ng-repeat='error in set.errors'
+            )
+              | {{error}}
+
+      .set-success(ng-show="view == 'set-success'")
+        h3 Password Updated!
+        p.
+          You should now be able to log into Season Link on your phone with
+          your email and new password.
+        p Have fun!
+
+      .check-error(ng-show="view == 'check-error'")
+        h3 Your reset token has expired
+        p You will need to reset your password again to get a valid token
+        a(href='#', ng-click="view = 'reset'") Reset Password
+
