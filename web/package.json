@@ -1,0 +1,22 @@
+{
+  "name": "seasonlink-website",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "compile": "./node_modules/webpack/bin/webpack.js -p; wintersmith build -C generator",
+    "start": "webpack-dev-server --content-base public/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shoptology",
+  "devDependencies": {
+    "css-loader": "^0.9.1",
+    "file-loader": "^0.8.1",
+    "jquery": "^2.1.3",
+    "jsx-loader": "^0.12.2",
+    "sass-loader": "^0.3.1",
+    "style-loader": "^0.8.3",
+    "url-loader": "^0.5.5",
+    "webpack": "^1.5.3"
+  }
+}

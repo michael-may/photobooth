@@ -1,0 +1,31 @@
+extends layout
+
+block append scripts
+  script(src='/js/home.bundle.js')
+
+block content
+
+  .bg-light-blue
+    .container
+      .row
+        div(class='col-md-8 text')
+          .centered
+            h2.
+              Season Link is your source for high school sports news,
+              schedules and scores.
+            p.
+              Fans, players and parents can follow their favorite teams
+              to receive updates directly from their coaches and school
+              administrators.
+            p.
+              Now in limited beta testing on iOS and Android.
+              Contact us at 
+              <a href="mailto:feedback@seasonlink.co">feedback@seasonlink.co</a>
+              for support or to send suggestions.
+            p.
+              If you are a school administrator or representative,
+              contact us at
+              <a href="mailto:schools@seasonlink.co">schools@seasonlink.co</a>
+              to inquire about setting up your school on Season Link.
+        div(class='col-md-4 phone')
+          img(src='/img/phone.png')

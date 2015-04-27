@@ -38,7 +38,7 @@ gulp.task('updateJSON', function() {
 	return gulp.src("./out/**")
 		.pipe(tap(function (file,t) {
             //console.log(path.basename(file.path));
-            var photos = JSON.parse(fs.readFileSync('./static/photos.json'));
+            var photos = JSON.parse(fs.readFileSync('./web/public/photos.json'));
             // Make sure we dont add the folder
             if(path.basename(file.path) !== 'out') {
             	// remove the extension
@@ -47,7 +47,7 @@ gulp.task('updateJSON', function() {
             	console.log('added', filename);
 
             	// Save file
-            	fs.writeFile("./static/photos.json", JSON.stringify(photos), function(err) {
+            	fs.writeFile("./web/public/photos.json", JSON.stringify(photos), function(err) {
 				    if(err) {
 				        return console.log(err);
 				    }
@@ -63,7 +63,7 @@ gulp.task('uploadJSONToS3', function() {
 		console.log('You need to make a secrets file in the root directory with your AWS info!  Check the README.');
 	}
 
-	return gulp.src("./static/photos.json")
+	return gulp.src("./web/public/photos.json")
         .pipe(s3({
 		  "key": secrets.accessKeyId,
 		  "secret": secrets.secretAccessKey,

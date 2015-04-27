@@ -1,0 +1,31 @@
+@import "common";
+
+
+
+.phone, .text {
+	text-align:center;
+	a {
+		color:white;
+		text-decoration: underline;
+	}
+}
+
+
+@media (min-width: $screen-md-min) {
+	.text {
+		position:relative;
+		height: 574px;
+
+		.centered {
+			position:absolute;
+			top:50%;
+			left: 50%;
+			transform: translateY(-50%) translateX(-50%);
+			width: 65%;
+		}
+
+		h2 {
+			margin-bottom:20px;
+		}
+	}
+}
