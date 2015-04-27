@@ -16,6 +16,6 @@ var secrets = {
 module.exports = secrets;
 ```
 
-With your approved Shoptology AWS information.
+* Add your approved Shoptology AWS information.
 
-run ```gulp watch``` and throw some photos into the 'in' folder!
+* Run ```gulp watch``` and throw some photos into the 'in' folder!
