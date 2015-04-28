@@ -14,14 +14,16 @@ app.controller('main', ['$scope', '$location', '$http', function($scope, $locati
     $scope.view = 'gallery';
     $scope.showBackButton = true;
 
-    if(query.p) {
-    	$scope.view = 'single';
-    	$scope.currentPhotoName = query.p;
-    	$scope.showBackButton = false;
-    }
+    
 
     $scope.$on('$locationChangeStart', function(event, route) {
-    	console.log(route);
+    	if(query.p) {
+	    	$scope.view = 'single';
+	    	$scope.currentPhotoName = query.p;
+	    	$scope.showBackButton = false;
+	    	return false;
+	    }
+
     	if(($location.path() == '/' && query.p) || $location.path() == '/single') {
     		$scope.view = 'single';
 
