@@ -35,7 +35,7 @@ gulp.task('uploadToS3', function() {
 
 gulp.task('updateJSON', function() {
 
-	return gulp.src("./out/**")
+	return gulp.src("./out/**/*.gif")
 		.pipe(tap(function (file,t) {
             //console.log(path.basename(file.path));
             var photos = JSON.parse(fs.readFileSync('./web/public/photos.json'));
