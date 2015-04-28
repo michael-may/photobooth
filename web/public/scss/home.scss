@@ -1,9 +1,20 @@
 @import "common";
 
+.thumbnail {
+    background: lightblue;
+}
+
 .gallery, .photo-container, .photo-container .thumbnail {
     padding: 0;
     margin: 0;
     border: none;
+}
+
+.gallery .thumbnail img {}
+
+.gallery .thumbnail {
+    border: 1px rgb(255, 247, 247) solid;
+    border-radius: 0;
 }
 
 .thumbnail img {

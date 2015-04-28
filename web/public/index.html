@@ -14,11 +14,18 @@
     <script src="/js/home.bundle.js"></script>
   </head>
   <body ng-controller="main">
+    
+    <center>
+      <br>
+      <img src="http://goshoptology.com/v6/img/logo.svg">
+      <br>
+      <br>
+    </center>
 
     <div class="row" ng-if="view == 'gallery'">
       <div class="col-sm-12 gallery">
-        <div class="col-sm-6 col-lg-4 photo-container" ng-repeat="item in photos">
-          <a href="#" class="thumbnail">
+        <div class="col-sm-6 col-lg-4 photo-container" ng-repeat="item in photos" ng-click="clickPhoto(item)">
+          <a href class="thumbnail">
             <img ng-src="https://s3.amazonaws.com/shoptology-photo-booth/{{item.name}}.gif">
           </a>
         </div>
@@ -26,6 +33,15 @@
     </div>
 
     <div class="container single" ng-if="view == 'single'">
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <a href class="btn btn-default" ng-click="backButton()">< Back</a>
+          <br>
+          <br>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <div class="thumbnail">
@@ -40,13 +56,10 @@
           <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.mp4" class="btn btn-block btn-primary">Download Video</a>
         </div>
       </div>
+
+      <br>
+      <br>
     </div>
 
-    <footer>
-      <div class="pull-left">
-        &copy; 2015 Shoptology
-        All rights reserved. <a href="/privacy/">Privacy&nbsp;Policy</a>.
-      </div>
-    </footer>
   </body>
 </html>
