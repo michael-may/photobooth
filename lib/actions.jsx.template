@@ -15,16 +15,19 @@ function main() {
 		
 		var outFolder = new Folder(workingDir);
 
-		var saveFile = new File(outFolder + '/PROCESSED_' + i + '.jpg');
+		//var saveOptions = new JPEGSaveOptions
 
+		
+		//var saveFile = new File(outFolder + '/PROCESSED_' + i + '.jpg');
 		var saveWebOptions = new ExportOptionsSaveForWeb();
 		saveWebOptions.format = SaveDocumentType.JPEG;
 		saveWebOptions.includeProfile = false;
 		saveWebOptions.optimized = true;
 		saveWebOptions.quality = 75;
 
-		doc.exportDocument(saveFile, ExportType.SAVEFORWEB, saveWebOptions);
-
+		//doc.exportDocument(saveFile, ExportType.SAVEFORWEB, saveWebOptions);
+		doc.exportDocument(file, ExportType.SAVEFORWEB, saveWebOptions);
+		
 		doc.close(SaveOptions.DONOTSAVECHANGES);
 	}
 	//return (new File($.fileName)).parent;
