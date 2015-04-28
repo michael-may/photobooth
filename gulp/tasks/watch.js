@@ -6,33 +6,40 @@ var fs = require('fs'),
 	runSequence = require('run-sequence'),
 	photoEditor = require('../../lib/photoEditor.js');
 
-gulp.task('watch', function() {
-	watch(['./in/**/*.JPG', './in/**/*.jpg'], function() {
-		var path = './in/';
-		var dir = fs.readdirSync(path);
-		var filesNeeded = 5;
-		var numFiles = 0;
-		var fileArr = [];
+var watchTimer = false;
 
-		for(var f in dir) {
-			var fileSync = path + dir[f];
-			var stat = fs.statSync(fileSync);
+var processImages = function processImages() {
+	var path = './in/';
+	var dir = fs.readdirSync(path);
+	var numFiles = 0;
+	var fileArr = [];
 
-			if(dir[f].toLowerCase().match(/(.jpg)$/)) {
-				numFiles++;
-				if(stat.isFile()) {
-					fileArr.push(dir[f]);
-				}
+	for(var f in dir) {
+		var fileSync = path + dir[f];
+		var stat = fs.statSync(fileSync);
+
+		if(dir[f].toLowerCase().match(/(.jpg)$/)) {
+			numFiles++;
+			if(stat.isFile()) {
+				fileArr.push(dir[f]);
 			}
 		}
+	}
 
-		if(numFiles == filesNeeded) {
-			console.log('PROCESS!!!');
-			photoEditor.edit(fileArr, './in/', './out/');
-		}
+	if(numFiles > 0) {
+		console.log('PROCESS!!!');
+		clearTimeout(watchTimer);
+		photoEditor.edit(fileArr, './in/', './out/');
+	}
+};
+
+gulp.task('watch', function() {
+	watch(['./in/**/*.JPG', './in/**/*.jpg'], function() {
+		clearTimeout(watchTimer);
+		watchTimer = setTimeout(processImages, 5000);
 	});
 
-	watch(['./out/**/*.*'], function() {
-		//runSequence('uploadToS3', 'updateJSON', 'uploadJSONToS3', 'clean-out');
+	watch(['./out/**/*.gif'], function() {
+		runSequence('uploadToS3', 'updateJSON', 'uploadJSONToS3', 'clean-out');
 	});
 });
