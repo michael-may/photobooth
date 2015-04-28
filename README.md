@@ -2,13 +2,16 @@
 
 ### Installation
 *	Clone the repo  
-*	Install ffmpeg on your system:
+*	Install ffmpeg and graphicsmagick on your system:
 ```
-OSX: brew install ffmpeg  
+OSX: 
+-brew install ffmpeg 
+-brew install graphicsmagick
 WIN: 
--Download the most recent package at: https://www.ffmpeg.org/download.html  
+-Download the most recent ffmpeg package at: https://www.ffmpeg.org/download.html  
 -Extract
 -Add path to binary to Environment Variables
+-Download the graphicsmagick installer at: http://www.graphicsmagick.org/download.html
 ```
 *	Run ```npm install```  
 *	Add a secrets.js with the following information:  

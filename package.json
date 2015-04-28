@@ -4,19 +4,17 @@
   "description": "A set of tools to run an automated photobooth",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preinstall" : "npm install -g gifsicle"
   },
   "author": "Michael May",
   "license": "ISC",
   "dependencies": {
     "fluent-ffmpeg": "^2.0.0-rc3",
-    "gif-stream": "^1.0.2",
-    "gif-video": "0.0.2",
-    "gifencoder": "^1.0.6",
+    "gifer": "0.0.1",
+    "gifsicle": "^2.0.1",
+    "gify": "^0.2.0",
     "gulp": "^3.8.11",
-    "gulp-watch": "^4.2.4",
-    "jpeg-js": "^0.1.1",
-    "neuquant": "^1.0.2"
+    "gulp-watch": "^4.2.4"
   },
   "devDependencies": {
     "gulp-clean": "^0.3.1",

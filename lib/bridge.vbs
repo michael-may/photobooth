@@ -15,4 +15,4 @@ javaScriptFile = fileContents
 
 Set appObj = createObject("Photoshop.Application")
 
-WScript.Echo appObj.DoJavaScript(javascriptFile, Array(), 1)
+DIM status : status = appObj.DoJavaScript(javascriptFile, Array(), 1)
