@@ -9,12 +9,23 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shoptology Photo Booth Gallery</title>
+    <title>Shoptology Block St. Party GIF Photo Booth</title>
+
     <script src="/js/common.js"></script>
     <script src="/js/home.bundle.js"></script>
+
   </head>
   <body ng-controller="main">
     
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=751126004910521";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
     <center>
       <br>
       <img src="http://goshoptology.com/v6/img/logo.svg">
@@ -23,17 +34,23 @@
     </center>
 
     <div class="row" ng-if="view == 'gallery'">
+      <div class="col-sm-12 instructions">
+        <p>Click / Touch on your image to get links for sharing and downloading.</p>
+      </div>
       <div class="col-sm-12 gallery">
-        <div class="col-sm-6 col-lg-4 photo-container" ng-repeat="item in photos" ng-click="clickPhoto(item)">
+        <div class="col-sm-6 col-lg-4 photo-container" ng-repeat="item in photos | startFrom: pagination.page * pagination.perPage | limitTo: pagination.perPage" ng-click="clickPhoto(item)">
           <a href class="thumbnail">
             <img ng-src="https://s3.amazonaws.com/shoptology-photo-booth/{{item.name}}.gif">
           </a>
         </div>
       </div>
+      <div class="col-sm-12 next-prev" ng-if="photos.length > 0">
+        <a href class="btn btn-primary" ng-click="pagination.prevPage()">Previous</a>
+        <a href class="btn btn-primary" ng-click="pagination.nextPage()">Next</a>
+      </div>
     </div>
 
     <div class="container single" ng-if="view == 'single'">
-
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
           <a href class="btn btn-default" ng-if="showBackButton" ng-click="backButton()">< Back</a>
@@ -49,17 +66,41 @@
           </div>
         </div>
       </div>
+
+      <div class="row actions">
+        <div class="col-md-6 col-md-offset-3">
+           <a href download="shoptology-gif.gif" class="btn btn-block btn-primary" ng-click="isShareCollapsed = !isShareCollapsed">Share on Social Media</a>
+
+           <div class="collapsed share" ng-class="{show:!isShareCollapsed}">
+            <div class="well">
+              <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fs3.amazonaws.com%2Fshoptology-photo-booth%2F{{currentPhotoName}}.gif">
+                <img src="https://www.tgifridays.com/system/pictures/images/1645/original/1420214354741513.jpg" width="70px">
+              </a>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-via="goshoptology" data-size="large" data-count="none" data-hashtags="BlockStParty">Tweet</a>
+              <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </div>
+          
+        </div>
+      </div>
+      </div>
+
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
-          <h3>Thanks for visiting our booth! - Shoptology</h3>
-          <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.gif" download="shoptology-gif.gif" class="btn btn-block btn-primary">Download GIF</a>
+          <a href download="shoptology-gif.gif" class="btn btn-block btn-primary" ng-click="isGifCollapsed = !isGifCollapsed">Download GIF</a>
+          <div class="collapsed gif" ng-class="{show:!isGifCollapsed}">
+            <div class="well">
+              <p><strong>Iphone Users:</strong> You will have to press and hold on the image to save it to your Camera Roll.  The image will not animate in your Camera Roll, but if you share or text the image you will be able to see it looping.  This is a limitation of Iphones.</p>
+              <p><strong>Android Users:</strong> <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.gif" class="btn">Follow this link to save the gif</a></p>
+            </div>
+            
+          </div>
+
           <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.mp4" class="btn btn-block btn-primary">Download Video</a>
         </div>
       </div>
 
       <br>
       <br>
-    </div>
 
   </body>
 </html>

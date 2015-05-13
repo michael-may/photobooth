@@ -29,4 +29,36 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     margin: 0;
 }
 
+.next-prev {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.instructions {
+    text-align: center;
+}
+
+.actions {
+    margin-top: 15px;
+}
+
+.facebook {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.collapsed {
+    max-height: 1px;
+    transition: max-height 300ms;
+    overflow-y: hidden;
+
+    &.show.gif {
+        max-height: 180px;
+    }
+
+    &.show.share {
+        max-height: 100px;
+    }
+}
+
 @media (min-width: $screen-md-min) {}

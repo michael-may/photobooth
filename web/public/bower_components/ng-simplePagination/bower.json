@@ -1,0 +1,15 @@
+{
+  "name": "ng-simplePagination",
+  "main": "./simplePagination.js",
+  "version": "1.0.3",
+  "keywords": [
+    "angular",
+    "pagination",
+    "static",
+    "paginate",
+    "pages"
+  ],
+  "dependencies": {
+    "angular": "*"
+  }
+}
