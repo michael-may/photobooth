@@ -45,6 +45,7 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
 .facebook {
     display: inline-block;
     vertical-align: top;
+    margin-right: 20px;
 }
 
 .collapsed {
@@ -59,6 +60,32 @@ a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active {
     &.show.share {
         max-height: 100px;
     }
+
+    &.show.video {
+        max-height: 160px;
+    }
+
+    &.show.email {
+        max-height: 355px;
+    }
 }
 
-@media (min-width: $screen-md-min) {}
+@media (max-width: $screen-sm-min) {
+    .collapsed {
+        &.show.gif {
+            max-height: 240px;
+        }
+
+        &.show.share {
+            max-height: 100px;
+        }
+
+        &.show.video {
+            max-height: 200px;
+        }
+
+        &.show.email {
+            max-height: 535px;
+        }
+    }
+}

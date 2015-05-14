@@ -45,8 +45,10 @@
         </div>
       </div>
       <div class="col-sm-12 next-prev" ng-if="photos.length > 0">
-        <a href class="btn btn-primary" ng-click="pagination.prevPage()">Previous</a>
-        <a href class="btn btn-primary" ng-click="pagination.nextPage()">Next</a>
+        <a href class="btn btn-primary" ng-click="pagination.prevPage()" ng-if="pagination.page !== 0">Previous Page</a>
+        <a href class="btn btn-primary" ng-click="pagination.nextPage()" ng-if="(pagination.page+1) !== pagination.numPages">Next Page</a>
+        <br>
+        <p>Page {{pagination.page+1}} of {{pagination.numPages}}</p>
       </div>
     </div>
 
@@ -69,33 +71,62 @@
 
       <div class="row actions">
         <div class="col-md-6 col-md-offset-3">
-           <a href download="shoptology-gif.gif" class="btn btn-block btn-primary" ng-click="isShareCollapsed = !isShareCollapsed">Share on Social Media</a>
-
+           
+           <a href download="shoptology-gif.gif" class="btn btn-block btn-primary" ng-click="isShareCollapsed = !isShareCollapsed">Share on Facebook or Twitter</a>
            <div class="collapsed share" ng-class="{show:!isShareCollapsed}">
             <div class="well">
               <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fs3.amazonaws.com%2Fshoptology-photo-booth%2F{{currentPhotoName}}.gif">
                 <img src="https://www.tgifridays.com/system/pictures/images/1645/original/1420214354741513.jpg" width="70px">
               </a>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-via="goshoptology" data-size="large" data-count="none" data-hashtags="BlockStParty">Tweet</a>
+              <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-count="none" data-hashtags="BlockStParty">Tweet</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+            </div>
           </div>
           
-        </div>
+          <a href class="btn btn-block btn-primary" ng-click="isEmailCollapsed = !isEmailCollapsed">Share on Instagram</a>
+           <div class="collapsed email" ng-class="{show:!isEmailCollapsed}">
+            <div class="well">
+              <form name="emailForm" ng-submit="emailFiles(currentPhotoName, email)">
+                <p><strong>Iphone Users:</strong> To share on Instagram, follow these steps:</p>
+                <ol>
+                  <li>Enter your email address and we will email you a video to upload to Instagram  (We are not saving your email)</li>
+                  <li>Open your email, open the message, and click on the attachment</li>
+                  <li>In the bottom left, click the action icon and choose "Save Video"</li>
+                  <li>The photo is now in your Camera Roll, you can open instagram and share it!</li>
+                </ol>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" ng-model="email" class="form-control" placeholder="Enter email">
+                </div>
+                <button type="submit" ng-disabled="!emailForm.$dirty || emailForm.$invalid" class="btn btn-default">Email me Instagram movie</button>
+
+                <p><strong>Android Users:</strong> <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.mp4" class="btn">Follow this link to save the video</a> to save.  You can now open Instagram and share the movie from your drive.</p>
+              </form>
+            </div>
+          </div>
+
       </div>
       </div>
 
       <div class="row">
         <div class="col-md-6 col-md-offset-3">
+
           <a href download="shoptology-gif.gif" class="btn btn-block btn-primary" ng-click="isGifCollapsed = !isGifCollapsed">Download GIF</a>
           <div class="collapsed gif" ng-class="{show:!isGifCollapsed}">
             <div class="well">
               <p><strong>Iphone Users:</strong> You will have to press and hold on the image to save it to your Camera Roll.  The image will not animate in your Camera Roll, but if you share or text the image you will be able to see it looping.  This is a limitation of Iphones.</p>
               <p><strong>Android Users:</strong> <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.gif" class="btn">Follow this link to save the gif</a></p>
             </div>
-            
           </div>
 
-          <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.mp4" class="btn btn-block btn-primary">Download Video</a>
+          <a href ng-click="isVideoCollapsed = !isVideoCollapsed" class="btn btn-block btn-primary">Download Video</a>
+          <div class="collapsed gif" ng-class="{show:!isVideoCollapsed}">
+            <div class="well">
+              <p><strong>Iphone Users:</strong> Iphones can't currently download videos from the browser.  Click the "Share on Instagram" option and follow the first step to be emailed the video for download.</p>
+              <p><strong>Android Users:</strong> <a href="https://s3.amazonaws.com/shoptology-photo-booth/{{currentPhotoName}}.mp4" class="btn">Follow this link to save the video</a></p>
+            </div>
+          </div>
+
         </div>
       </div>
 
