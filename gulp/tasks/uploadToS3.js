@@ -75,7 +75,7 @@ gulp.task('uploadJSONToS3', function() {
         .pipe(s3({
 		  "key": secrets.accessKeyId,
 		  "secret": secrets.secretAccessKey,
-		  "bucket": "shoptology-photo-booth-site"
+		  "bucket": "gif.goshoptology.com"
 		}, options));
 
 });
